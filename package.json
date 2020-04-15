@@ -1,0 +1,26 @@
+{
+  "name": "diet-menu-planner",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "cd backend && node index.js",
+    "build": "cd backend && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bienluke90/diet-menu-planner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bienluke90/diet-menu-planner/issues"
+  },
+  "homepage": "https://github.com/bienluke90/diet-menu-planner#readme"
+}

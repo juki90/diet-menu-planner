@@ -1,0 +1,426 @@
+@charset "utf-8";
+
+$primary: rgb(151, 105, 55);
+
+$navbar-background: rgba(225, 210, 180, 0.75);
+$navbar-brand-background: $primary;
+$body-background: #d1d5d1;
+$card-background: #fff5e9;
+
+@import '../../node_modules/bulma/bulma.sass';
+
+* {
+  outline: none !important;
+}
+
+p {
+  white-space: normal;
+}
+
+a {
+  cursor: pointer !important;
+}
+
+strong {
+  white-space: pre;
+}
+
+html {
+  overflow-y: scroll;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.15);
+  &::-webkit-scrollbar {
+    width: 15px;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+html,
+body {
+  background-color: $body-background !important;
+  min-height: 100vh;
+}
+
+#root > main {
+  position: relative;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  @media screen and (min-width: $desktop) {
+    top: 60px;
+  }
+}
+
+#root > header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.navbar {
+  background-color: $navbar-background;
+  box-shadow: 0 4px 10px 5px rgba(50, 50, 50, 0.2);
+  .container {
+    position: relative;
+    .navbar-brand {
+      position: relative;
+      left: 0;
+      background-color: $navbar-brand-background;
+      height: 50px;
+      width: 100%;
+      z-index: 9999;
+      img {
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+      }
+      @media screen and (min-width: $desktop) {
+        left: 10px;
+        height: 60px;
+        width: auto;
+      }
+    }
+    .navbar-title {
+      font-size: 1.4rem;
+      color: #ffffff;
+      text-shadow: 1px 1px 1px #555555;
+      margin: 0 10px;
+    }
+    .navbar-menu {
+      padding-left: 10px;
+      margin-left: 0;
+      @media screen and (min-width: 1024px) {
+        margin-left: 15px;
+      }
+      &.active {
+        display: block !important;
+      }
+    }
+    .navbar-burger {
+      padding: 8px 5px;
+      border-radius: 10px;
+      background-color: transparent;
+      border: 0 none;
+      span {
+        display: block;
+        position: static;
+        background-color: $card-background;
+        margin: 5px 6px;
+        height: 5px;
+        width: 30px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        border-radius: 3px;
+      }
+    }
+
+    .navbar-item {
+      border-radius: 6px;
+      background-color: transparent !important;
+      .button {
+        margin-right: 0;
+        margin-left: 10px;
+      }
+      .active {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.card {
+  margin: 10px 0;
+  padding: 10px 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  @media screen and (min-width: $desktop) {
+    padding: 25px 10px;
+  }
+  .title {
+    padding-bottom: 15px;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    padding: 0 10px 0 8px;
+    background-color: $navbar-background;
+    .card-header-title {
+      padding: 10px;
+    }
+    .card-header-item {
+      margin: 0 10px;
+    }
+    a {
+      display: inline-block;
+      margin: 12px 4px 0 8px;
+    }
+  }
+  .card-content {
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    p.subtitle {
+      padding: 10px !important;
+    }
+    .box {
+      padding: 20px;
+      border-radius: 6px;
+      width: 100%;
+      &.day-box {
+        padding: 0;
+        .card-content {
+          padding: 10px 0;
+        }
+      }
+    }
+    .content {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    .field {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.card-form {
+  min-height: 100vh;
+  position: relative;
+  .card {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 100%;
+    max-width: 420px;
+    transform: translate(-50%, -30%);
+    .title {
+      margin-bottom: 40px;
+    }
+    label {
+      display: block;
+      position: relative;
+    }
+    .icon {
+      display: flex;
+      top: 35px;
+      &.is-right {
+        float: right;
+      }
+      &.is-left {
+        float: left;
+      }
+    }
+  }
+}
+
+.ingredients {
+  display: block;
+  .card-footer-item {
+    display: inline-block;
+    padding: 5px;
+    height: 30px;
+    width: 50%;
+    border-bottom: 1px solid #ededed;
+    @media screen and (min-width: $tablet) {
+      width: 25%;
+    }
+    @media screen and (min-width: $desktop) {
+      width: 15%;
+    }
+  }
+}
+
+.meal-snippet {
+  display: flex;
+  flex-direction: column;
+  width: 92%;
+  margin: 10px 4% !important;
+  min-height: 180px;
+  border: 1px solid #ddd !important;
+  padding: 15px;
+  @media screen and (min-width: $tablet) {
+    width: 46% !important;
+    margin: 10px 2% !important;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 23% !important;
+    margin: 10px 1% !important;
+  }
+  .title {
+    padding: 0;
+    margin-bottom: 25px !important;
+  }
+
+  .subtitle {
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  a {
+    margin-right: 15px;
+  }
+  footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 5px;
+    span {
+      display: inline-block;
+      width: 50%;
+    }
+  }
+}
+
+.control {
+  margin-bottom: 10px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    input,
+    .select {
+      margin: 10px 0;
+    }
+  }
+  .radio {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    margin-left: 0;
+    input {
+      margin-right: 10px;
+    }
+  }
+  .select {
+    width: 100%;
+    height: 40px;
+    select {
+      width: inherit;
+      height: inherit;
+      padding: 0 5px;
+      font-size: 1rem;
+    }
+  }
+}
+
+.button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.add-new {
+  width: 100%;
+  .subtitle {
+    margin-bottom: 10px;
+  }
+  .button {
+    padding: 0;
+    margin-bottom: 25px;
+    padding: 5px 15px;
+  }
+}
+
+.modal {
+  display: block !important;
+  .scrollable {
+    overflow-y: scroll;
+    scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.15);
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+      width: 10px;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+    &::-webkit-scrollbar-thumb {
+      width: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .button {
+      margin-bottom: 25px;
+    }
+  }
+  .modal-card-head {
+    padding: 15px;
+    .modal-header-title {
+      display: block;
+      margin: 0 !important;
+    }
+    button {
+      margin-left: auto;
+    }
+  }
+  .modal-card {
+    position: absolute;
+    margin: 0;
+    max-width: 320px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $body-background;
+    overflow: visible;
+    @media screen and (min-width: $tablet) {
+      max-width: 700px;
+    }
+    .react-time-picker {
+      margin: 10px 0;
+      padding: 0 15px;
+      .react-time-picker__wrapper {
+        height: 30px;
+        border: 0 none;
+      }
+      input {
+        margin: 0;
+        padding: 0;
+        line-height: 30px;
+      }
+    }
+  }
+  section {
+    padding: 15px 20px;
+  }
+}
+
+.react-datepicker-wrapper {
+  input {
+    margin: 10px 0;
+  }
+}
+
+.product-search {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: -50px;
+  .product {
+    flex-basis: calc(50% - 30px);
+    margin: 15px;
+    p {
+      word-break: break-word;
+    }
+    .column {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    span {
+      display: block;
+      font-size: 15px;
+    }
+    .img {
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .button {
+      display: block;
+      margin: auto auto 0 auto !important;
+    }
+  }
+}
