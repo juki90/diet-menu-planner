@@ -40,6 +40,16 @@ class MealModal extends React.Component {
     return day.meals.map((m) => m.type);
   })();
 
+  componentDidMount = () => {
+    const html = document.getElementById('document-root');
+    html.classList.add('no-overflow');
+  };
+
+  componentWillUnmount = () => {
+    const html = document.getElementById('document-root');
+    html.classList.remove('no-overflow');
+  };
+
   handleNameChange = (e) => {
     this.setState({
       name: e.target.value,

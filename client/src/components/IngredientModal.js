@@ -32,6 +32,16 @@ class IngredientModal extends React.Component {
     return name;
   })();
 
+  componentDidMount = () => {
+    const html = document.getElementById('document-root');
+    html.classList.add('no-overflow');
+  };
+
+  componentWillUnmount = () => {
+    const html = document.getElementById('document-root');
+    html.classList.remove('no-overflow');
+  };
+
   handleInputChange = (e) => {
     const { ingredientNames } = this.props;
     const [, value] = e.target.getAttribute('id').split('-');

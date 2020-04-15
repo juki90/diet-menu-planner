@@ -5,16 +5,38 @@ import PropTypes from 'prop-types';
 import logo from '../assets/logo.svg';
 import { routes } from '../routes';
 import { logout as logoutAction } from '../actions';
+import ReactDOM from 'react-dom';
 
 class Header extends React.Component {
   state = {
     navOpened: false,
   };
 
-  handleNavClick = () => {
-    this.setState((prevState) => ({
-      navOpened: !prevState.navOpened,
-    }));
+  componentDidMount = () => {
+    document.addEventListener('click', this.handleClickOutside, true);
+  };
+
+  componentWillUnmount = () => {
+    document.removeEventListener('click', this.handleClickOutside, true);
+  };
+
+  handleNavClick = (e) => {
+    const width = document.body.clientWidth;
+    if (width < 1024) {
+      this.setState((prevState) => ({
+        navOpened: !prevState.navOpened,
+      }));
+    }
+  };
+
+  handleClickOutside = (e) => {
+    const domNode = ReactDOM.findDOMNode(this);
+
+    if (!domNode || !domNode.contains(e.target)) {
+      this.setState({
+        navOpened: false,
+      });
+    }
   };
 
   render() {
@@ -25,7 +47,7 @@ class Header extends React.Component {
         <nav className="navbar">
           <div className="container">
             <div className="navbar-brand">
-              <Link className="navbar-item" to={routes.home}>
+              <Link className="navbar-item" to={routes.home} onClick={this.handleNavClick}>
                 <img src={logo} alt="Diet menu planner logo" />
                 <span className="navbar-title">Diet menu planner</span>
               </Link>
@@ -44,27 +66,35 @@ class Header extends React.Component {
             </div>
             <div id="mainNavbar" className={`navbar-menu ${navOpened ? 'active' : ''}`}>
               <div className="navbar-start">
-                <Link className="navbar-item" to={routes.dashboard}>
+                <Link className="navbar-item" to={routes.dashboard} onClick={this.handleNavClick}>
                   Dashboard
                 </Link>
-                <Link className="navbar-item" to={routes.meals}>
+                <Link className="navbar-item" to={routes.meals} onClick={this.handleNavClick}>
                   Meals
                 </Link>
-                <Link className="navbar-item" to={routes.ingredients}>
+                <Link className="navbar-item" to={routes.ingredients} onClick={this.handleNavClick}>
                   Ingredients
                 </Link>
-                <Link className="navbar-item" to={routes.config}>
+                <Link className="navbar-item" to={routes.config} onClick={this.handleNavClick}>
                   Configuration
                 </Link>
               </div>
               <div className="navbar-end">
                 <div className="navbar-item">
                   <div className="buttons">
-                    <Link className="button is-primary" to={routes.register}>
+                    <Link
+                      className="button is-primary"
+                      to={routes.register}
+                      onClick={this.handleNavClick}
+                    >
                       Register
                     </Link>
                     {!loggedAs && (
-                      <Link className="button is-light" to={routes.login}>
+                      <Link
+                        className="button is-light"
+                        to={routes.login}
+                        onClick={this.handleNavClick}
+                      >
                         Log in
                       </Link>
                     )}

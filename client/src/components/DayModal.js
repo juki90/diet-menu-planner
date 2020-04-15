@@ -13,6 +13,16 @@ class DayModal extends React.Component {
     dateExists: false,
   };
 
+  componentDidMount = () => {
+    const html = document.getElementById('document-root');
+    html.classList.add('no-overflow');
+  };
+
+  componentWillUnmount = () => {
+    const html = document.getElementById('document-root');
+    html.classList.remove('no-overflow');
+  };
+
   handleDateChange = (date) => {
     const { days } = this.props;
     const dates = days.map((d) => {

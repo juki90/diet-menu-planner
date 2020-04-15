@@ -2,7 +2,7 @@
 
 $primary: rgb(151, 105, 55);
 
-$navbar-background: rgba(225, 210, 180, 0.75);
+$navbar-background: rgba(225, 210, 180, 0.85);
 $navbar-brand-background: $primary;
 $body-background: #d1d5d1;
 $card-background: #fff5e9;
@@ -49,6 +49,7 @@ body {
   top: 50px;
   left: 0;
   width: 100%;
+  padding: 0 10px;
   @media screen and (min-width: $desktop) {
     top: 60px;
   }
@@ -59,7 +60,10 @@ body {
   left: 0;
   top: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 999;
+  @media screen and (min-width: $desktop) {
+    height: 50px;
+  }
 }
 
 .navbar {
@@ -90,13 +94,19 @@ body {
       margin: 0 10px;
     }
     .navbar-menu {
+      flex-direction: row;
       padding-left: 10px;
       margin-left: 0;
-      @media screen and (min-width: 1024px) {
+      @media screen and (min-width: $desktop) {
+        height: 60px;
         margin-left: 15px;
       }
       &.active {
-        display: block !important;
+        display: flex !important;
+        flex-direction: column;
+        @media screen and (min-width: $desktop) {
+          flex-direction: row;
+        }
       }
     }
     .navbar-burger {
@@ -120,6 +130,9 @@ body {
       border-radius: 6px;
       background-color: transparent !important;
       .button {
+        &:first-child {
+          margin-left: 0;
+        }
         margin-right: 0;
         margin-left: 10px;
       }
@@ -237,8 +250,6 @@ body {
 }
 
 .meal-snippet {
-  display: flex;
-  flex-direction: column;
   width: 92%;
   margin: 10px 4% !important;
   min-height: 180px;
@@ -270,7 +281,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: auto;
-    padding-top: 5px;
+    padding-top: 15px;
     span {
       display: inline-block;
       width: 50%;
@@ -329,6 +340,7 @@ body {
 
 .modal {
   display: block !important;
+  z-index: 999999999;
   .scrollable {
     overflow-y: scroll;
     scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.15);
@@ -423,4 +435,18 @@ body {
       margin: auto auto 0 auto !important;
     }
   }
+}
+
+.content p:not(:last-child),
+.content dl:not(:last-child),
+.content ol:not(:last-child),
+.content ul:not(:last-child),
+.content blockquote:not(:last-child),
+.content pre:not(:last-child),
+.content table:not(:last-child) {
+  margin-bottom: 0 !important;
+}
+
+#document-root.no-overflow {
+  overflow: hidden !important;
 }
